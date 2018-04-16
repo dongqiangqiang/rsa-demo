@@ -53,7 +53,7 @@ public class CoopDemo {
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
 
-    private static final String DATA_URL = "http://10.0.11.48:8086/cooperation/data/gjj";
+    private static final String DATA_URL = "http://localhost:8086/cooperation/data/gjj";
 
     /**
      * RSAUtil.initKey();
@@ -62,7 +62,7 @@ public class CoopDemo {
      * @throws Exception
      */
     public static void main(String[] args) throws Exception {
-        RSAUtil.initKey();
+
         Long start = System.currentTimeMillis();
         String source = "13333";
         JSONObject jsonObject = new JSONObject();
@@ -90,13 +90,13 @@ public class CoopDemo {
             Response response = okHttpClient.newCall(request).execute();
             if (response.isSuccessful()) {
 
-                data = response.body().string();
-
-                jsonObject = JSONObject.parseObject(data);
-                data = jsonObject.getString("results");
-
-                data = rsaService.decrypt(CUSTOMER_PRIVATE_KEY, data);
-                System.out.println(data);
+                String responseData = response.body().string();
+                System.out.println(responseData);
+                JSONObject jsonObject1 = JSONObject.parseObject(responseData);
+                if (jsonObject1 != null && jsonObject1.getInteger("code") == 1) {
+                    responseData = jsonObject1.getString("results");
+                    System.out.println(rsaService.decrypt(CUSTOMER_PRIVATE_KEY, responseData));
+                }
             }
 
             System.out.println("time-->:" + (System.currentTimeMillis() - start));
