@@ -19,18 +19,18 @@ public class CoopDemo {
             "R0HGn5OYIp+Na4OwSzfAZhf+dQ1LPJ5u7t9SAi07QDakZTstDMAqaWXN5QIDAQAB";
 
 
-    private final static String CUSTOMER_PRIVATE_KEY = "MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAI5ZNwF2bnr6NHzZUq1mJzhQpWWS\n" +
-            "GCzCIe7rgANM6+jTOf4JWQopPQH8BCFsqZnhCquplG7GlAYrYR4m9dOUCVV80XtQXC2BFVhKzKzr\n" +
-            "Pyc9kct0Vu7N/zuPGb+rgf/gs6/cqUX58ETBZR8Cg7H5xS0aDfrDmPtGHf7byRS3ZLTZAgMBAAEC\n" +
-            "gYAtf+7JFOXzgQ5N6dk3e7OFmKGFedEoXVUjXTsp0uiFHx8mSC6hxNSvUbKwTF9ZxEj43deIIQkn\n" +
-            "f64nSSTCYEsq/SfBJWcFCd6O+iIQ7E4tzwFZh3p++I/6UmbWDvbnPAs/EElcy2bBtDMS5KfDRrMe\n" +
-            "WHCHYkc+xEjAgDFCWltH0QJBAP1mn2n1VbkpBJDHhNuaQukZqlg2tih+8O+g3dLWErmDqoGoTmWb\n" +
-            "NzM9/BE94K7zKoJFr16ZtVWZYQSpRPLXtSsCQQCPzv31EIjffVo4OSFu1IbmcauVy5MwcHeQ8JdH\n" +
-            "IqLdJgLFOKGuyIzC79xoXjYCisZf38Ku+Uv1N3g84IakwcQLAkEA9af9N01900kugeTKqdI8t5oI\n" +
-            "CAjSQyP9E3HSWkjqUiqQq62sgtgchXK74UMphLF8Llq8DmvY3akZ4tjuXLY9jQJAZXi140zGd4P4\n" +
-            "vAE74PsfMM12OB1L/3rsMx5AcBY1evwOKmE6XJzwDcC38gC/9W08anv14AbSHPYF5la7StfaXwJB\n" +
-            "ANPdpfMSoC2dumYzqY6qp2DS+MoblFTuf4XOvXgUxrWuVaE/k6HBW9EqkgmsL+iAhzqKRmWAz+Rz\n" +
-            "6s8lUFkMZdc=";
+    private final static String CUSTOMER_PRIVATE_KEY = "MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAMYhZMIPTLx9ohQ6iSoFbiBFj6TC\n" +
+            "o5/LO5dKzkrXQlHM/lnaVBL43PFxVF37HOfqfivgcYUqDAgJObUZMYF4Q06oiM0QDvFJuXcv+2YU\n" +
+            "H5K/ikV6U2BgP+XJfa6UXkTgL7WEUFW1MS4qhgOL1vZZRYG4mPleN525vygZw5RNfx5/AgMBAAEC\n" +
+            "gYAXLokPe6LK2xg/ramm1QPRmtH3wR5L8AeE6CfC8fS8hXOtJ7J2lc+kIFJyvJLhP7qLf7NIlWba\n" +
+            "+dlaqxvzvhKByL7OZo0ki3RwJKX7jsrRbwKu+rSOUSVKEX15A3htCc0inJ1zmR2N6myxUlk14Yqe\n" +
+            "B5ExKKeUj7YgRgai4KCkwQJBAPAlR67EsDWtkfAdfVrOaeIj0lABXKQoNkE20ZKBPR/2bwEPFesz\n" +
+            "vAVmoqHjTLJFFcrW62BL7JvWwO1vCRxX8akCQQDTNgL/a0TuWtUN/BUq4ccvQe0tI+iRo6n23WpD\n" +
+            "Ymv3cAOMu/eXNKGNmU+V3o4vMqXQIz+9y7wXRkiWQ/RQavfnAkBiATTh9E9deLqIXeCcwIShz7Cz\n" +
+            "Cfs+21JZBwA8ZBYIB1CCBCAT3wcqxRo2K0dPsbYVE+T3ZcToTJpry9bSBGoRAkEAjsZ+NEdBK5c/\n" +
+            "WtrDPF+vlCSOver+NiVaqcR3JuILdhLEc4hFEHPFmcC/aeIuX31vVUnetuBYX6tlOh7pssr8lQJB\n" +
+            "AN4DAnQ1f5THUC608DK4rNPtvkEM8cLyKo7K9hMVOWeRK7Iq1GZCq4SkKZ8NGnP3Qwwobxz39EeE\n" +
+            "jQ9usydYMn4=";
 
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
@@ -38,17 +38,16 @@ public class CoopDemo {
     private static final String DATA_URL = "http://localhost:8086/cooperation/data/gjj";
 
     /**
-     * RSAUtil.initKey();
+     * RSAUtil.initKey() 生产rsa 私钥，公钥;
      *
      * @param args
      * @throws Exception
      */
     public static void main(String[] args) throws Exception {
-//        RSAUtil.initKey();
         Long start = System.currentTimeMillis();
         String source = "13333";
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("userId", "10001");
+        jsonObject.put("unionId", "10001");
 
         String data = rsaService.encrypt(PUBLIC_KEY, JSONObject.toJSONString(jsonObject));
         String signnature = RSAUtil.sign(CUSTOMER_PRIVATE_KEY, "ccb", data);
