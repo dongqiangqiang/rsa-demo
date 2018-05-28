@@ -1,0 +1,50 @@
+.svn/
+.idea/
+.settings/
+.project
+.classpath
+target/
+out/
+bin/
+build/
+*.iml
+*.ipr
+*.class
+atlassian-ide-plugin.xml
+jars/
+nbactions.xml
+deploy-pom.xml
+tmp/
+
+# SBT
+lib_managed/
+src_managed/
+test-output/
+.history
+
+# IntelliJ
+*.iws
+
+# Eclipse
+.cache
+.scala_dependencies
+.settings
+.target/
+
+# Netbeans
+.classpath_nb
+
+# Mac
+.DS_Store
+
+# Other
+*.pyc
+home/been/myApp.log
+logs/
+yzm/
+/projects
+*.data
+*.txt
+dependency-reduced-pom.xml
+/service/src/main/resources/gjjdb.properties
+/core/src/main/resources/redis_prod.properties

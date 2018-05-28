@@ -18,7 +18,6 @@ public class CoopDemo {
             "nvFp9Xu/M2hS+Yim0EqMpKsOX8ZcFjZinkxDpbJ1YvmOCmgJatn9C/DQoNfS+PqVCD1NvwgjjqMk\n" +
             "R0HGn5OYIp+Na4OwSzfAZhf+dQ1LPJ5u7t9SAi07QDakZTstDMAqaWXN5QIDAQAB";
 
-
     private final static String CUSTOMER_PRIVATE_KEY = "MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAMYhZMIPTLx9ohQ6iSoFbiBFj6TC\n" +
             "o5/LO5dKzkrXQlHM/lnaVBL43PFxVF37HOfqfivgcYUqDAgJObUZMYF4Q06oiM0QDvFJuXcv+2YU\n" +
             "H5K/ikV6U2BgP+XJfa6UXkTgL7WEUFW1MS4qhgOL1vZZRYG4mPleN525vygZw5RNfx5/AgMBAAEC\n" +
@@ -31,6 +30,7 @@ public class CoopDemo {
             "WtrDPF+vlCSOver+NiVaqcR3JuILdhLEc4hFEHPFmcC/aeIuX31vVUnetuBYX6tlOh7pssr8lQJB\n" +
             "AN4DAnQ1f5THUC608DK4rNPtvkEM8cLyKo7K9hMVOWeRK7Iq1GZCq4SkKZ8NGnP3Qwwobxz39EeE\n" +
             "jQ9usydYMn4=";
+
 
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
@@ -45,7 +45,7 @@ public class CoopDemo {
      */
     public static void main(String[] args) throws Exception {
         Long start = System.currentTimeMillis();
-        String source = "13333";
+        String channel = "1666";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("unionId", "10001");
 
@@ -55,7 +55,7 @@ public class CoopDemo {
         JSONObject object = new JSONObject();
         object.put("data", data);
         object.put("signature", signnature);
-        object.put("source", source);
+        object.put("channel", channel);
 
         String requestJson = JSONObject.toJSONString(object);
         System.out.println("requestJson-->" + requestJson);
